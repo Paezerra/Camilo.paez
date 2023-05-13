@@ -6,10 +6,90 @@
   </head>
   <body>
     <h1>Camilomon! 🔥💧🌱</h1>
+
+    <section id="Enemy"></section>
+    <h2>Tus rivales!</h2>
+    <!-- Mascotas -->
+    <label for="EnemyShaymin">
+      <span id="EnemyShaymin_Hp">20 Hp</span>
+      Shaymin
+      <img
+        src="Pokemones/492.gif"
+        alt="Shaymin"
+        title="tierra"
+        width="60"
+        height="60"
+        id="EnemyShaymin"
+      />
+    </label>
+    <label for="EnemySunflora">
+      <span id="EnemySunflora_Hp">20 Hp</span>
+      Sunflora
+      <img
+        src="Pokemones/192.gif"
+        alt="Sunflora"
+        title="agua_fuego"
+        width="60"
+        height="60"
+        id="EnemySunflora"
+      />
+    </label>
+    <span id="EnemyTotodaile_Hp">20 Hp</span>
+    <label for="EnemyTotodaile">
+      Totodaile
+      <img
+        src="Pokemones/158.gif"
+        alt="Totodaile"
+        title="agua"
+        width="60"
+        height="60"
+        id="EnemyTotodaile"
+      />
+    </label>
+    <label for="EnemyCharizard">
+      <span id="EnemyCharizard_Hp">20 Hp</span>
+      Charizard
+      <img
+        src="Pokemones/006.gif"
+        alt="Charizard"
+        title="fuego"
+        width="60"
+        height="60"
+        id="EnemyCharizard"
+      />
+    </label>
+    <label for="EnemyGarchomp">
+      <span id="EnemyGarchomp_Hp">20 Hp</span>
+      Garchomp
+      <img
+        src="Pokemones/445.gif"
+        alt="Garchomp"
+        title="fuego_tierra"
+        width="60"
+        height="60"
+        id="EnemyGarchomp"
+      />
+    </label>
+    <label for="EnemyKabutops">
+      <span id="EnemyKabutops_Hp">20 Hp</span>
+      Kabutops
+      <img
+        src="Pokemones/141.gif"
+        alt="Kabutops"
+        title="tierra"
+        width="60"
+        height="60"
+        id="Kabutops"
+      />
+    </label>
+
+    
+
     <section id="Mascota"></section>
-    <h2>Porfavor! Elije tu mascota!</h2>
+    <h2>Porfavor! Elije tu pokemon!!</h2>
     <!-- Mascotas -->
     <label for="Shaymin">
+      <span id="Shaymin_Hp">20 Hp</span>
       Shaymin
       <input type="radio" name="mokepon" id="Shaymin" />
       <img
@@ -22,6 +102,7 @@
       />
     </label>
     <label for="Sunflora">
+      <span id="Sunflora_Hp">20 Hp</span>
       Sunflora
       <input type="radio" name="mokepon" id="Sunflora" />
       <img
@@ -33,6 +114,7 @@
         id="Sunflora"
       />
     </label>
+    <span id="Totodaile_Hp">20 Hp</span>
     <label for="Totodaile">
       Totodaile
       <input type="radio" name="mokepon" id="Totodaile" />
@@ -46,6 +128,7 @@
       />
     </label>
     <label for="Charizard">
+      <span id="Charizard_Hp">20 Hp</span>
       Charizard
       <input type="radio" name="mokepon" id="Charizard" />
       <img
@@ -58,6 +141,7 @@
       />
     </label>
     <label for="Garchomp">
+      <span id="Garchomp_Hp">20 Hp</span>
       Garchomp
       <input type="radio" name="mokepon" id="Garchomp" />
       <img
@@ -70,6 +154,7 @@
       />
     </label>
     <label for="Kabutops">
+      <span id="Kabutops_Hp">20 Hp</span>
       Kabutops
       <input type="radio" name="mokepon" id="Kabutops" />
       <img
@@ -85,8 +170,14 @@
       <button id="boton_seleccionar_mascota">Seleccionar</button>
     </p>
     <section id="Status">
-      <p>Tu mascota <span id="span_nombre_mascota"></span> tiene <span>20</span> Hp</p>
-      <p>El <span id="span_nombre_mascota_enemigo"></span> de tu enemigo tiene <span>30</span> Hp</p>
+      <p>
+        Tu mascota <span id="span_nombre_mascota"></span> tiene
+        <span>20</span> Hp
+      </p>
+      <p>
+        El <span id="span_nombre_mascota_enemigo"></span> de tu enemigo tiene
+        <span>30</span> Hp
+      </p>
     </section>
     <section id="Ataque"></section>
     <h2>Elije tu proximo ataque!</h2>
@@ -95,9 +186,7 @@
       <button id="boton_ataque_agua">Agua 💧</button>
       <button id="boton_ataque_tierra">Tierra 🌱</button>
     </p>
-    <section id="Log_de_ataques">
-      
-    </section>
+    <section id="Log_deataques"></section>
 
     <section id="Reiniciar">
       <h2>Quieres reiniciar?</h2>

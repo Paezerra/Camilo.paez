@@ -4,7 +4,22 @@ let ataqueJuador
 let ataqueEnemigo
 
 let pokemonAliado
-let pokemonEnemigo 
+let pokemonEnemigo
+
+let ShayminHp
+let SunfloraHp
+let TotodaileHp
+let CharizardHp
+let GarchompHp
+let KabutopsHp
+
+let EnemyShayminHp
+let EnemySunfloraHp
+let EnemyTotodaileHp
+let EnemyCharizardHp
+let EnemyGarchompHp
+let EnemyKabutopsHp
+
 
 function ataque(tipo) {
     ataqueJuador = tipo;
@@ -22,10 +37,10 @@ function ataqueEnemigoGlobal() {
         ataqueEnemigo = "tierra";
     }
 
-    combate ()
+    combate()
 }
 
-function combate () {
+function combate() {
     // aca ellos hacen unos condicionales para determinar quien gana en funcion de ataques, pero no lo hice por que eso ya se hizo antes
     crearMensaje()
 }
@@ -49,7 +64,7 @@ function seleccionarMascota() {
     if (inputShayim.checked) {
         spanMascotaJugador.innerHTML = "Shayim"
         pokemonAliado = "Shayim"
-    } else if (inputSunflora.hecked) {
+    } else if (inputSunflora.checked) {
         spanMascotaJugador.innerHTML = "Sunflora"
         pokemonAliado = "Sunflora"
     } else if (inputTotodaile.checked) {
@@ -60,7 +75,7 @@ function seleccionarMascota() {
         pokemonAliado = "Charizard"
     } else if (inputGarchomp.checked) {
         spanMascotaJugador.innerHTML = "Garchomp"
-       pokemonAliado = "Garchomp"
+        pokemonAliado = "Garchomp"
     } else if (inputKabutops.checked) {
         spanMascotaJugador.innerHTML = "Kabutops"
         pokemonAliado = "Kabutops"
@@ -122,6 +137,48 @@ function iniciarJuego() {
     botonTierra.addEventListener('click', function () {
         ataque('tierra');
     });
+
+    // Asigno Hp inicial; a pokemones
+    //let ShayminHp
+    // let SunfloraHp
+    // let TotodaileHp
+    // let CharizardHp
+    // let GarchompHp
+    // let KabutopsHp
+
+    ShayminHp = document.getElementById("Shaymin_Hp")
+    ShayminHp.innerHTML = 20 + "Hp"
+    SunfloraHp = document.getElementById("Sunflora_Hp")
+    SunfloraHp.innerHTML = 30 + "Hp"
+    TotodaileHp = document.getElementById("Totodaile_Hp")
+    TotodaileHp.innerHTML = 25 + "Hp"
+    CharizardHp = document.getElementById("Charizard_Hp")
+    CharizardHp.innerHTML = 40 + "Hp"
+    GarchompHp = document.getElementById("Garchomp_Hp")
+    GarchompHp.innerHTML = 25 + "Hp"
+    KabutopsHp = document.getElementById("Kabutops_Hp")
+    KabutopsHp.innerHTML = 10 + "Hp"
+
+    // let EnemyShayminHp
+    // let EnemySunfloraHp
+    // let EnemyTotodaileHp
+    // let EnemyCharizardHp
+    // let EnemyGarchompHp
+    // let EnemyKabutopsHp
+
+    EnemyShayminHp = document.getElementById("EnemyShaymin_Hp")
+    EnemyShayminHp.innerHTML = 25 + "Hp"
+    EnemySunfloraHp = document.getElementById("EnemySunflora_Hp")
+    EnemySunfloraHp.innerHTML = 25 + "Hp"
+    EnemyTotodaileHp = document.getElementById("EnemyTotodaile_Hp")
+    EnemyTotodaileHp.innerHTML = 30 + "Hp"
+    EnemyCharizardHp = document.getElementById("EnemyCharizard_Hp")
+    EnemyCharizardHp.innerHTML = 35 + "Hp"
+    EnemyGarchompHp = document.getElementById("EnemyGarchomp_Hp")
+    EnemyGarchompHp.innerHTML = 15 + "Hp"
+    EnemyKabutopsHp = document.getElementById("EnemyKabutops_Hp")
+    EnemyKabutopsHp.innerHTML = 20 + "Hp"
+
 }
 
 function crearMensaje() {
@@ -129,12 +186,14 @@ function crearMensaje() {
     let seccionMensajes = document.getElementById('Log_de_ataques')
 
     let parrafoJugador = document.createElement("p")
-    parrafoJugador.innerHTML = "Tu " + pokemonAliado +" ataco con un ataque tipo "+ ataqueJuador+ " y le quito 10 de vida al " + pokemonEnemigo +" del enemigo!"
+    parrafoJugador.innerHTML = "Tu " + pokemonAliado + " ataco con un ataque tipo " + ataqueJuador + " y le quito 10 de vida al " + pokemonEnemigo + " del enemigo!"
     let parrafoEnemigo = document.createElement("p")
-    parrafoEnemigo.innerHTML = "El " + pokemonEnemigo +" de tu enemigo uso un ataque tipo " + ataqueEnemigo+"! y le quito 5 de vida a tu " + pokemonAliado +"!"
+    parrafoEnemigo.innerHTML = "El " + pokemonEnemigo + " de tu enemigo uso un ataque tipo " + ataqueEnemigo + "! y le quito 5 de vida a tu " + pokemonAliado + "!"
 
     seccionMensajes.appendChild(parrafoJugador)
     seccionMensajes.appendChild(parrafoEnemigo)
+
+
 }
 
 window.addEventListener('load', iniciarJuego)
