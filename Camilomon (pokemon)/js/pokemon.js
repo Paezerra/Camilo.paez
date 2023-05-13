@@ -440,19 +440,19 @@ function crearMensajeJugador(hpJugador, hpEnemigo, muerteaAliado, muerteEnemigo)
         seccionMensajes.appendChild(parrafoEnemigo)
 
 
-        if (perdiste()) {
+        if (ganaste()) {
+            parrafoResultado.innerHTML = "GANASTE! MUY BIEN!"
+            seccionMensajes.appendChild(parrafoResultado)
+            let sectionReiniciar = document.getElementById("Reiniciar")
+            sectionReiniciar.style.display = "block"
+        } else if (perdiste()) {
             parrafoResultado.innerHTML = "PERDISTE! Lo Sentimos :(!"
             seccionMensajes.appendChild(parrafoResultado)
 
             let sectionReiniciar = document.getElementById("Reiniciar")
             sectionReiniciar.style.display = "block"
 
-        } else if (ganaste()) {
-            parrafoResultado.innerHTML = "GANASTE! MUY BIEN!"
-            seccionMensajes.appendChild(parrafoResultado)
-            let sectionReiniciar = document.getElementById("Reiniciar")
-            sectionReiniciar.style.display = "block"
-        }
+        } 
 
     }
 
@@ -673,6 +673,5 @@ function actualizarNombres(pokemon, pokemon2) {
     }
     spanMascotaEnemigo.innerHTML = pokemon2
 }
-
 
 window.addEventListener('load', iniciarJuego)

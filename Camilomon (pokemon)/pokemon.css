@@ -1,0 +1,89 @@
+body {
+    display: flex;
+    flex-direction: column;
+    /* flex-grow: 0.5; */
+    justify-content:center;
+    align-items: center;
+}
+
+#enemy, #mascotas{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+/* Selector de tipo - por que un tipo de html */
+h1 {
+    background-color: beige;
+    border-width: 2px black ;
+}
+
+h2 {
+    width: 300px;
+    color: coral;
+}
+
+/* Selector tipo clase */
+.subtitulos {
+    color: blue;
+}
+
+/* Selector de tipo id */
+
+#logo-pokemon {
+    background-color: antiquewhite;
+    border: 4px dotted red;
+    max-width: 300px;
+    /* height: 100px; */
+    padding: 20px;
+    margin: 0;
+}
+
+.status-bar {
+    position: relative;
+    width: 300px;
+    height: 40px;
+    background-color: #FFFFFF;
+    border: 2px solid #000000;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  
+  .status-bar .bar {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    height: 10px;
+    width: 200px;
+    background-color: #00FF00;
+  }
+  
+  .status-bar .label {
+    position: absolute;
+    top: 5px;
+    left: 220px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  .status-bar .value {
+    position: absolute;
+    top: 20px;
+    left: 220px;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  label {
+    background-color: whitesmoke;
+    padding: 30px;
+    border: 4px dotted red;
+    margin: 10px;
+  }
+
+  input {
+    height: 20px;
+    width: 20px;
+  }

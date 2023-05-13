@@ -3,167 +3,187 @@
     <meta charset="utf-8" />
     <title>Camilomon!</title>
     <script src="js/pokemon.js"></script>
+    <link rel="stylesheet" href="./pokemon.css" />
   </head>
   <body>
-    <h1>Camilomon! 🔥💧🌱</h1>
+    <section>
+      <img
+        src="./Pokemones/International_Pokémon_logo.svg.png"
+        alt=""
+        ,
+        height="80"
+        id="logo-pokemon"
+      />
+      <h1>Camilomon! 🔥💧🌱</h1>
+      <p class="subtitulos">Bienvenido a Camilomon v1.0</p>
+    </section>
 
-    <section id="Enemy"></section>
+    <div class="status-bar">
+      <div class="bar" style="width: 50%"></div>
+      <div class="label">HP</div>
+      <div class="value">50/100</div>
+    </div>
+
     <h2>Tus rivales!</h2>
-    <!-- Mascotas -->
-    <label for="EnemyShaymin">
-      <span id="EnemyShaymin_Hp">20 Hp</span>
-      Shaymin
-      <img
-        src="Pokemones/492.gif"
-        alt="Shaymin"
-        title="tierra"
-        width="60"
-        height="60"
-        id="EnemyShaymin"
-      />
-    </label>
-    <label for="EnemySunflora">
-      <span id="EnemySunflora_Hp">20 Hp</span>
-      Sunflora
-      <img
-        src="Pokemones/192.gif"
-        alt="Sunflora"
-        title="agua_fuego"
-        width="60"
-        height="60"
-        id="EnemySunflora"
-      />
-    </label>
-    <span id="EnemyTotodaile_Hp">20 Hp</span>
-    <label for="EnemyTotodaile">
-      Totodaile
-      <img
-        src="Pokemones/158.gif"
-        alt="Totodaile"
-        title="agua"
-        width="60"
-        height="60"
-        id="EnemyTotodaile"
-      />
-    </label>
-    <label for="EnemyCharizard">
-      <span id="EnemyCharizard_Hp">20 Hp</span>
-      Charizard
-      <img
-        src="Pokemones/006.gif"
-        alt="Charizard"
-        title="fuego"
-        width="60"
-        height="60"
-        id="EnemyCharizard"
-      />
-    </label>
-    <label for="EnemyGarchomp">
-      <span id="EnemyGarchomp_Hp">20 Hp</span>
-      Garchomp
-      <img
-        src="Pokemones/445.gif"
-        alt="Garchomp"
-        title="fuego_tierra"
-        width="60"
-        height="60"
-        id="EnemyGarchomp"
-      />
-    </label>
-    <label for="EnemyKabutops">
-      <span id="EnemyKabutops_Hp">20 Hp</span>
-      Kabutops
-      <img
-        src="Pokemones/141.gif"
-        alt="EnemyKabutops"
-        title="tierra"
-        width="60"
-        height="60"
-        id="EnemyKabutops"
-      />
-    </label>
+    <section id="enemy">
+      <!-- Mascotas -->
+      <label for="EnemyShaymin">
+        <span id="EnemyShaymin_Hp">20 Hp</span>
+        Shaymin
+        <img
+          src="Pokemones/492.gif"
+          alt="Shaymin"
+          title="tierra"
+          width="60"
+          height="60"
+          id="EnemyShaymin"
+        />
+      </label>
+      <label for="EnemySunflora">
+        <span id="EnemySunflora_Hp">20 Hp</span>
+        Sunflora
+        <img
+          src="Pokemones/192.gif"
+          alt="Sunflora"
+          title="agua_fuego"
+          width="60"
+          height="60"
+          id="EnemySunflora"
+        />
+      </label>
+      <label for="EnemyTotodaile">
+        <span id="EnemyTotodaile_Hp">20 Hp</span>
+        Totodaile
+        <img
+          src="Pokemones/158.gif"
+          alt="Totodaile"
+          title="agua"
+          width="60"
+          height="60"
+          id="EnemyTotodaile"
+        />
+      </label>
+      <label for="EnemyCharizard">
+        <span id="EnemyCharizard_Hp">20 Hp</span>
+        Charizard
+        <img
+          src="Pokemones/006.gif"
+          alt="Charizard"
+          title="fuego"
+          width="60"
+          height="60"
+          id="EnemyCharizard"
+        />
+      </label>
+      <label for="EnemyGarchomp">
+        <span id="EnemyGarchomp_Hp">20 Hp</span>
+        Garchomp
+        <img
+          src="Pokemones/445.gif"
+          alt="Garchomp"
+          title="fuego_tierra"
+          width="60"
+          height="60"
+          id="EnemyGarchomp"
+        />
+      </label>
+      <label for="EnemyKabutops">
+        <span id="EnemyKabutops_Hp">20 Hp</span>
+        Kabutops
+        <img
+          src="Pokemones/141.gif"
+          alt="EnemyKabutops"
+          title="tierra"
+          width="60"
+          height="60"
+          id="EnemyKabutops"
+        />
+      </label>
+    </section>
 
-    <section id="Mascota"></section>
     <h2>Porfavor! Elije tu pokemon!!</h2>
-    <!-- Mascotas -->
-    <label for="Shaymin">
-      <span id="Shaymin_Hp"></span>
-      Shaymin
-      <input type="radio" name="mokepon" id="Shaymin" />
-      <img
-        src="Pokemones/492.gif"
-        alt="Shaymin"
-        title="tierra"
-        width="60"
-        height="60"
-        id="Shaymin"
-      />
-    </label>
-    <label for="Sunflora">
-      <span id="Sunflora_Hp">20 Hp</span>
-      Sunflora
-      <input type="radio" name="mokepon" id="Sunflora" />
-      <img
-        src="Pokemones/192.gif"
-        alt="Sunflora"
-        title="agua_fuego"
-        width="60"
-        height="60"
-        id="Sunflora"
-      />
-    </label>
-    <span id="Totodaile_Hp">20 Hp</span>
-    <label for="Totodaile">
-      Totodaile
-      <input type="radio" name="mokepon" id="Totodaile" />
-      <img
-        src="Pokemones/158.gif"
-        alt="Totodaile"
-        title="agua"
-        width="60"
-        height="60"
-        id="Totodaile"
-      />
-    </label>
-    <label for="Charizard">
-      <span id="Charizard_Hp">20 Hp</span>
-      Charizard
-      <input type="radio" name="mokepon" id="Charizard" />
-      <img
-        src="Pokemones/006.gif"
-        alt="Charizard"
-        title="fuego"
-        width="60"
-        height="60"
-        id="Charizard"
-      />
-    </label>
-    <label for="Garchomp">
-      <span id="Garchomp_Hp">20 Hp</span>
-      Garchomp
-      <input type="radio" name="mokepon" id="Garchomp" />
-      <img
-        src="Pokemones/445.gif"
-        alt="Garchomp"
-        title="fuego_tierra"
-        width="60"
-        height="60"
-        id="Garchomp"
-      />
-    </label>
-    <label for="Kabutops">
-      <span id="Kabutops_Hp">20 Hp</span>
-      Kabutops
-      <input type="radio" name="mokepon" id="Kabutops" />
-      <img
-        src="Pokemones/141.gif"
-        alt="Kabutops"
-        title="tierra"
-        width="60"
-        height="60"
-        id="Kabutops"
-      />
-    </label>
+    <section id="mascotas">
+      <!-- Mascotas -->
+      <label for="Shaymin">
+        <span id="Shaymin_Hp"></span>
+        Shaymin
+        <input type="radio" name="mokepon" id="Shaymin" />
+        <img
+          src="Pokemones/492.gif"
+          alt="Shaymin"
+          title="tierra"
+          width="60"
+          height="60"
+          id="Shaymin"
+        />
+      </label>
+      <label for="Sunflora">
+        <span id="Sunflora_Hp">20 Hp</span>
+        Sunflora
+        <input type="radio" name="mokepon" id="Sunflora" />
+        <img
+          src="Pokemones/192.gif"
+          alt="Sunflora"
+          title="agua_fuego"
+          width="60"
+          height="60"
+          id="Sunflora"
+        />
+      </label>
+      <label for="Totodaile">
+        <span id="Totodaile_Hp">20 Hp</span>
+        Totodaile
+        <input type="radio" name="mokepon" id="Totodaile" />
+        <img
+          src="Pokemones/158.gif"
+          alt="Totodaile"
+          title="agua"
+          width="60"
+          height="60"
+          id="Totodaile"
+        />
+      </label>
+      <label for="Charizard">
+        <span id="Charizard_Hp">20 Hp</span>
+        Charizard
+        <input type="radio" name="mokepon" id="Charizard" />
+        <img
+          src="Pokemones/006.gif"
+          alt="Charizard"
+          title="fuego"
+          width="60"
+          height="60"
+          id="Charizard"
+        />
+      </label>
+      <label for="Garchomp">
+        <span id="Garchomp_Hp">20 Hp</span>
+        Garchomp
+        <input type="radio" name="mokepon" id="Garchomp" />
+        <img
+          src="Pokemones/445.gif"
+          alt="Garchomp"
+          title="fuego_tierra"
+          width="60"
+          height="60"
+          id="Garchomp"
+        />
+      </label>
+      <label for="Kabutops">
+        <span id="Kabutops_Hp">20 Hp</span>
+        Kabutops
+        <input type="radio" name="mokepon" id="Kabutops" />
+        <img
+          src="Pokemones/141.gif"
+          alt="Kabutops"
+          title="tierra"
+          width="60"
+          height="60"
+          id="Kabutops"
+        />
+      </label>
+    </section>
+
 
     <section id="Status">
       <p>
