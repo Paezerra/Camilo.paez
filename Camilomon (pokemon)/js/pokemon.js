@@ -72,26 +72,33 @@ function seleccionarMascota() {
     let inputKabutops = document.getElementById("Kabutops")
 
     let spanMascotaJugador = document.getElementById("span_nombre_mascota")
+    let spanVidaMascotaJugador = document.getElementById("vida_mascota_jugador")
 
 
     if (inputShayim.checked) {
         spanMascotaJugador.innerHTML = "Shayim"
         pokemonAliado = "Shayim"
+        spanVidaMascotaJugador.innerHTML = ShayminHpLife
     } else if (inputSunflora.checked) {
         spanMascotaJugador.innerHTML = "Sunflora"
         pokemonAliado = "Sunflora"
+        spanVidaMascotaJugador.innerHTML = SunfloraHpLife
     } else if (inputTotodaile.checked) {
         spanMascotaJugador.innerHTML = "Totodaile"
         pokemonAliado = "Totodaile"
+        spanVidaMascotaJugador.innerHTML = TotodaileHpLife
     } else if (inputCharizard.checked) {
         spanMascotaJugador.innerHTML = "Charizard"
         pokemonAliado = "Charizard"
+        spanVidaMascotaJugador.innerHTML = CharizardHpLife
     } else if (inputGarchomp.checked) {
         spanMascotaJugador.innerHTML = "Garchomp"
         pokemonAliado = "Garchomp"
+        spanVidaMascotaJugador.innerHTML = GarchompHpLife
     } else if (inputKabutops.checked) {
         spanMascotaJugador.innerHTML = "Kabutops"
         pokemonAliado = "Kabutops"
+        spanVidaMascotaJugador.innerHTML = KabutopsHpLife
     } else (
         alert("Selecciona un pokemon!")
     )
@@ -104,32 +111,40 @@ function seleccionarMascota() {
 function mascotaDelEnemigoRandom() {
     let ataqueAleatorio = aletatorio(1, 6)
     let spanMascotaEnemigo = document.getElementById('span_nombre_mascota_enemigo')
+    let spanVidaMascotaEnemigo = document.getElementById("vida_mascota_enemigo")
 
     if (ataqueAleatorio == 1) {
         // Shayim
         spanMascotaEnemigo.innerHTML = 'Shayim'
         pokemonEnemigo = 'Shayim'
+        spanVidaMascotaEnemigo.innerHTML = EnemyShayminHpLife
     } else if (ataqueAleatorio == 2) {
         // Sunflora
         spanMascotaEnemigo.innerHTML = 'Sunflora'
         pokemonEnemigo = 'Sunflora'
+        spanVidaMascotaEnemigo.innerHTML = EnemySunfloraHpLife
     } else if (ataqueAleatorio == 3) {
         // Totodaile
         spanMascotaEnemigo.innerHTML = 'Totodaile'
         pokemonEnemigo = 'Totodaile'
+        spanVidaMascotaEnemigo.innerHTML = EnemyTotodaileHpLife
     } else if (ataqueAleatorio == 4) {
         // Charizard
         spanMascotaEnemigo.innerHTML = 'Charizard'
         pokemonEnemigo = 'Charizard'
+        spanVidaMascotaEnemigo.innerHTML = EnemyCharizardHpLife
     } else if (ataqueAleatorio == 5) {
         // Garchomp
         spanMascotaEnemigo.innerHTML = 'Garchomp'
         pokemonEnemigo = 'Garchomp'
+        spanVidaMascotaEnemigo.innerHTML = EnemyGarchompHpLife
     } else if (ataqueAleatorio == 6) {
         // Kabutops
         spanMascotaEnemigo.innerHTML = 'Kabutops'
         pokemonEnemigo = 'Kabutops'
+        spanVidaMascotaEnemigo.innerHTML = EnemyKabutopsHpLife
     }
+
 }
 
 function iniciarJuego() {
@@ -160,7 +175,7 @@ function iniciarJuego() {
     // let KabutopsHp
 
     ShayminHp = document.getElementById("Shaymin_Hp")
-    ShayminHpLife =20
+    ShayminHpLife = 20
     ShayminHp.innerHTML = ShayminHpLife + "Hp"
     SunfloraHp = document.getElementById("Sunflora_Hp")
     SunfloraHpLife = 30
@@ -186,7 +201,7 @@ function iniciarJuego() {
     // let EnemyKabutopsHp
 
     EnemyShayminHp = document.getElementById("EnemyShaymin_Hp")
-    EnemyShayminHpLife =25
+    EnemyShayminHpLife = 25
     EnemyShayminHp.innerHTML = EnemyShayminHpLife + "Hp"
     EnemySunfloraHp = document.getElementById("EnemySunflora_Hp")
     EnemySunfloraHpLife = 20
