@@ -20,6 +20,19 @@ let EnemyCharizardHp
 let EnemyGarchompHp
 let EnemyKabutopsHp
 
+let ShayminHpLife
+let SunfloraHpLife
+let TotodaileHpLife
+let CharizardHpLife
+let GarchompHpLife
+let KabutopsHpLife
+
+let EnemyShayminHpLife
+let EnemySunfloraHpLife
+let EnemyTotodaileHpLife
+let EnemyCharizardHpLife
+let EnemyGarchompHpLife
+let EnemyKabutopsHpLife
 
 function ataque(tipo) {
     ataqueJuador = tipo;
@@ -147,17 +160,23 @@ function iniciarJuego() {
     // let KabutopsHp
 
     ShayminHp = document.getElementById("Shaymin_Hp")
-    ShayminHp.innerHTML = 20 + "Hp"
+    ShayminHpLife =20
+    ShayminHp.innerHTML = ShayminHpLife + "Hp"
     SunfloraHp = document.getElementById("Sunflora_Hp")
-    SunfloraHp.innerHTML = 30 + "Hp"
+    SunfloraHpLife = 30
+    SunfloraHp.innerHTML = SunfloraHpLife + "Hp"
     TotodaileHp = document.getElementById("Totodaile_Hp")
-    TotodaileHp.innerHTML = 25 + "Hp"
+    TotodaileHpLife = 25
+    TotodaileHp.innerHTML = TotodaileHpLife + "Hp"
     CharizardHp = document.getElementById("Charizard_Hp")
-    CharizardHp.innerHTML = 40 + "Hp"
+    CharizardHpLife = 40
+    CharizardHp.innerHTML = CharizardHpLife + "Hp"
     GarchompHp = document.getElementById("Garchomp_Hp")
-    GarchompHp.innerHTML = 25 + "Hp"
+    GarchompHpLife = 25
+    GarchompHp.innerHTML = GarchompHpLife + "Hp"
     KabutopsHp = document.getElementById("Kabutops_Hp")
-    KabutopsHp.innerHTML = 10 + "Hp"
+    KabutopsHpLife = 10
+    KabutopsHp.innerHTML = KabutopsHpLife + "Hp"
 
     // let EnemyShayminHp
     // let EnemySunfloraHp
@@ -167,17 +186,23 @@ function iniciarJuego() {
     // let EnemyKabutopsHp
 
     EnemyShayminHp = document.getElementById("EnemyShaymin_Hp")
-    EnemyShayminHp.innerHTML = 25 + "Hp"
+    EnemyShayminHpLife =25
+    EnemyShayminHp.innerHTML = EnemyShayminHpLife + "Hp"
     EnemySunfloraHp = document.getElementById("EnemySunflora_Hp")
-    EnemySunfloraHp.innerHTML = 25 + "Hp"
+    EnemySunfloraHpLife = 20
+    EnemySunfloraHp.innerHTML = EnemySunfloraHpLife + "Hp"
     EnemyTotodaileHp = document.getElementById("EnemyTotodaile_Hp")
-    EnemyTotodaileHp.innerHTML = 30 + "Hp"
+    EnemyTotodaileHpLife = 30
+    EnemyTotodaileHp.innerHTML = EnemyTotodaileHpLife + "Hp"
     EnemyCharizardHp = document.getElementById("EnemyCharizard_Hp")
-    EnemyCharizardHp.innerHTML = 35 + "Hp"
+    EnemyCharizardHpLife = 45
+    EnemyCharizardHp.innerHTML = EnemyCharizardHpLife + "Hp"
     EnemyGarchompHp = document.getElementById("EnemyGarchomp_Hp")
-    EnemyGarchompHp.innerHTML = 15 + "Hp"
+    EnemyGarchompHpLife = 15
+    EnemyGarchompHp.innerHTML = EnemyGarchompHpLife + "Hp"
     EnemyKabutopsHp = document.getElementById("EnemyKabutops_Hp")
-    EnemyKabutopsHp.innerHTML = 20 + "Hp"
+    EnemyKabutopsHpLife = 25
+    EnemyKabutopsHp.innerHTML = EnemyKabutopsHpLife + "Hp"
 
 }
 
