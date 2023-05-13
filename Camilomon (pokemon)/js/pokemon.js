@@ -22,6 +22,11 @@ function ataqueEnemigoGlobal() {
         ataqueEnemigo = "tierra";
     }
 
+    combate ()
+}
+
+function combate () {
+    // aca ellos hacen unos condicionales para determinar quien gana en funcion de ataques, pero no lo hice por que eso ya se hizo antes
     crearMensaje()
 }
 
