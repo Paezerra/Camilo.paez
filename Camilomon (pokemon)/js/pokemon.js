@@ -229,6 +229,9 @@ function combate() {
     }
 
     //crearMensaje()
+
+    actualizarVidaJugador(pokemonAliado, pokemonEnemigo)
+    seleccionarMascota()
 }
 
 function aletatorio(min, max) {
@@ -306,32 +309,41 @@ function mascotaDelEnemigoRandom() {
         }
     } while (EnemyShayminHpLife > 0 || EnemySunfloraHpLife > 0 || EnemyTotodaileHpLife > 0 || EnemyCharizardHpLife > 0 || EnemyGarchompHpLife > 0 || EnemyKabutopsHpLife > 0);
 
-
-
-    // actualizarVidaJugador(pokemonAliado, pokemonEnemigo)
-    combate()
-    actualizarVidaJugador(pokemonAliado, pokemonEnemigo)
-
 }
 
 function iniciarJuego() {
+
+    let radioInputs = document.getElementsByName("mokepon");
+
+    for (let i = 0; i < radioInputs.length; i++) {
+        radioInputs[i].addEventListener("change", function () {
+            let sectionStatsAtaque = document.getElementById("Status")
+            sectionStatsAtaque.style.display = "block"
+            seleccionarMascota();
+            actualizarNombres(pokemonAliado, pokemonEnemigo)
+        });
+    }
+
+    // let radioInputSelected = document.getElementsByName("mokepon")
+    // radioInputSelected.addEventListener("checked", seleccionarMascota)
+
     let botonMascota = document.getElementById("boton_seleccionar_mascota");
-    botonMascota.addEventListener("click", seleccionarMascota);
+    botonMascota.addEventListener("click", combate);
 
-    let botonFuego = document.getElementById("boton_ataque_fuego");
-    botonFuego.addEventListener("click", function () {
-        ataque('fuego');
-    });
+    // let botonFuego = document.getElementById("boton_ataque_fuego");
+    // botonFuego.addEventListener("click", function () {
+    //     ataque('fuego');
+    // });
 
-    let botonAgua = document.getElementById("boton_ataque_agua");
-    botonAgua.addEventListener('click', function () {
-        ataque('agua');
-    });
+    // let botonAgua = document.getElementById("boton_ataque_agua");
+    // botonAgua.addEventListener('click', function () {
+    //     ataque('agua');
+    // });
 
-    let botonTierra = document.getElementById("boton_ataque_tierra");
-    botonTierra.addEventListener('click', function () {
-        ataque('tierra');
-    });
+    // let botonTierra = document.getElementById("boton_ataque_tierra");
+    // botonTierra.addEventListener('click', function () {
+    //     ataque('tierra');
+    // });
 
 
     let botonIniciar = document.getElementById("boton_restart")
@@ -344,6 +356,12 @@ function iniciarJuego() {
     // let CharizardHp
     // let GarchompHp
     // let KabutopsHp
+
+    let sectionStatsAtaque = document.getElementById("Status")
+    sectionStatsAtaque.style.display = "none"
+    let sectionReiniciar = document.getElementById("Reiniciar")
+    sectionReiniciar.style.display = "none"
+
 
     ShayminHp = document.getElementById("Shaymin_Hp")
     ShayminHpLife = 20
@@ -395,31 +413,47 @@ function iniciarJuego() {
 function crearMensajeJugador(hpJugador, hpEnemigo, muerteaAliado, muerteEnemigo) {
     let seccionMensajes = document.getElementById('Log_de_ataques')
 
+    let parrafoJugador = document.createElement("p")
 
-    if (hpJugador && hpEnemigo !== "") {
+    // else {
+    //     seccionMensajes.appendChild(parrafoJugador)
+    //     seccionMensajes.appendChild(parrafoEnemigo)
+    // }
+
+    console.log(hpJugador)
+    console.log(hpEnemigo)
+    if (hpJugador || hpEnemigo !== "") {
 
         let separador = document.createElement("p")
         separador.innerHTML = "----------------"
         seccionMensajes.appendChild(separador)
+        let parrafoResultado = document.createElement("p")
 
         let parrafoJugador = document.createElement("p")
         parrafoJugador.innerHTML = "Tu " + pokemonAliado + " ataco y se le redujo la vida a " + hpJugador + "!!"
+
         let parrafoEnemigo = document.createElement("p")
         parrafoEnemigo.innerHTML = "El " + pokemonEnemigo + " de tu enemigo ataco y se le redujo la vida a " + hpEnemigo + "!"
 
+        console.log('llegue aca')
+        seccionMensajes.appendChild(parrafoJugador)
+        seccionMensajes.appendChild(parrafoEnemigo)
 
-        if (ShayminHpLife <= 0 && SunfloraHpLife <= 0 && TotodaileHpLife <= 0 && CharizardHpLife <= 0 && GarchompHpLife <= 0 && KabutopsHpLife <= 0) {
-            parrafoJugador.innerHTML = "PERDISTE! Lo Sentimos :(!"
-            seccionMensajes.appendChild(parrafoJugador)
 
-        } else if (EnemyShayminHpLife <= 0 && EnemySunfloraHpLife <= 0 && EnemyTotodaileHpLife <= 0 && EnemyCharizardHpLife <= 0 && EnemyGarchompHpLife <= 0 && EnemyKabutopsHpLife <= 0) {
-            parrafoJugador.innerHTML = "GANASTE! MUY BIEN!"
-            seccionMensajes.appendChild(parrafoJugador)
+        if (perdiste()) {
+            parrafoResultado.innerHTML = "PERDISTE! Lo Sentimos :(!"
+            seccionMensajes.appendChild(parrafoResultado)
+
+            let sectionReiniciar = document.getElementById("Reiniciar")
+            sectionReiniciar.style.display = "block"
+
+        } else if (ganaste()) {
+            parrafoResultado.innerHTML = "GANASTE! MUY BIEN!"
+            seccionMensajes.appendChild(parrafoResultado)
+            let sectionReiniciar = document.getElementById("Reiniciar")
+            sectionReiniciar.style.display = "block"
         }
-        else {
-            seccionMensajes.appendChild(parrafoJugador)
-            seccionMensajes.appendChild(parrafoEnemigo)
-        }
+
     }
 
     if (hpJugador == "") {
@@ -521,6 +555,7 @@ function actualizarVidaJugador(pokemon, pokemon2) {
         PokemonHp.innerHTML = KabutopsHpLife + "Hp"
         spanVidaMascotaJugador.innerHTML = KabutopsHpLife
     }
+
     spanMascotaJugador.innerHTML = pokemon
 
     if (pokemon2 == "Shaymin") {
@@ -566,5 +601,78 @@ function actualizarVidaJugador(pokemon, pokemon2) {
 function reiniciarJuego() {
     location.reload()
 }
+
+function actualizarNombres(pokemon, pokemon2) {
+    let pokeText1 = pokemon + "_Hp"
+    let pokeText2 = "Enemy" + pokemon2 + "_Hp"
+
+    let PokemonHp = document.getElementById(pokeText1)
+    let EnemyPokemonHp = document.getElementById(pokeText2)
+
+    let spanVidaMascotaJugador = document.getElementById("vida_mascota_jugador")
+    let spanMascotaJugador = document.getElementById("span_nombre_mascota")
+
+    let spanMascotaEnemigo = document.getElementById('span_nombre_mascota_enemigo')
+    let spanVidaMascotaEnemigo = document.getElementById("vida_mascota_enemigo")
+
+
+    if (pokemon == "Shaymin") {
+        hpJugador = ShayminHpLife
+        PokemonHp.innerHTML = ShayminHpLife + "Hp"
+        spanVidaMascotaJugador.innerHTML = ShayminHpLife
+    } else if (pokemon == "Sunflora") {
+        hpJugador = SunfloraHpLife
+        PokemonHp.innerHTML = SunfloraHpLife + "Hp"
+        spanVidaMascotaJugador.innerHTML = SunfloraHpLife
+
+    } else if (pokemon == "Totodaile") {
+        hpJugador = TotodaileHpLife
+        PokemonHp.innerHTML = TotodaileHpLife + "Hp"
+        spanVidaMascotaJugador.innerHTML = TotodaileHpLife
+    } else if (pokemon == "Charizard") {
+        hpJugador = CharizardHpLife
+        PokemonHp.innerHTML = CharizardHpLife + "Hp"
+        spanVidaMascotaJugador.innerHTML = CharizardHpLife
+    } else if (pokemon == "Garchomp") {
+        hpJugador = GarchompHpLife
+        PokemonHp.innerHTML = GarchompHpLife + "Hp"
+        spanVidaMascotaJugador.innerHTML = GarchompHpLife
+    }
+    else if (pokemon == "Kabutops") {
+        hpJugador = KabutopsHpLife
+        PokemonHp.innerHTML = KabutopsHpLife + "Hp"
+        spanVidaMascotaJugador.innerHTML = KabutopsHpLife
+    }
+
+    spanMascotaJugador.innerHTML = pokemon
+
+    if (pokemon2 == "Shaymin") {
+        EnemyPokemonHp.innerHTML = EnemyShayminHpLife + "Hp"
+        spanVidaMascotaEnemigo.innerHTML = EnemyShayminHpLife
+        hpEnemigo = EnemyShayminHpLife
+    } else if (pokemon2 == "Sunflora") {
+        EnemyPokemonHp.innerHTML = EnemySunfloraHpLife + "Hp"
+        spanVidaMascotaEnemigo.innerHTML = EnemySunfloraHpLife
+        hpEnemigo = EnemySunfloraHpLife
+    } else if (pokemon2 == "Totodaile") {
+        EnemyPokemonHp.innerHTML = EnemyTotodaileHpLife + "Hp"
+        spanVidaMascotaEnemigo.innerHTML = EnemyTotodaileHpLife
+        hpEnemigo = EnemyTotodaileHpLife
+    } else if (pokemon2 == "Charizard") {
+        EnemyPokemonHp.innerHTML = EnemyCharizardHpLife + "Hp"
+        spanVidaMascotaEnemigo.innerHTML = EnemyCharizardHpLife
+        hpEnemigo = EnemyCharizardHpLife
+    } else if (pokemon2 == "Garchomp") {
+        EnemyPokemonHp.innerHTML = EnemyGarchompHpLife + "Hp"
+        spanVidaMascotaEnemigo.innerHTML = EnemyGarchompHpLife
+        hpEnemigo = EnemyGarchompHpLife
+    } else if (pokemon2 == "Kabutops") {
+        EnemyPokemonHp.innerHTML = EnemyKabutopsHpLife + "Hp"
+        spanVidaMascotaEnemigo.innerHTML = EnemyKabutopsHpLife
+        hpEnemigo = EnemyKabutopsHpLife
+    }
+    spanMascotaEnemigo.innerHTML = pokemon2
+}
+
 
 window.addEventListener('load', iniciarJuego)
