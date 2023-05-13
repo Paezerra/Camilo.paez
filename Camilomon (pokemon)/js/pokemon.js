@@ -81,10 +81,14 @@ function combate() {
 
         // Shayim
 
-    } else if (pokemonAliado == "Shaymin" && pokemonEnemigo == "Sunflora" || pokemonAliado == "Sunflora" && pokemonEnemigo == "Shaymin") {
+    } else if (pokemonAliado == "Shaymin" && pokemonEnemigo == "Sunflora" ) {
         // sunflora es agua fuego
         ShayminHpLife = ShayminHpLife - 10
         EnemySunfloraHpLife = EnemySunfloraHpLife - 10
+    } else if (pokemonAliado == "Sunflora" && pokemonEnemigo == "Shaymin") {
+        // sunflora es agua fuego
+        EnemyShayminHpLife = EnemyShayminHpLife - 10
+        SunfloraHpLife = SunfloraHpLife - 10
     } else if (pokemonAliado == "Shaymin" && pokemonEnemigo == "Totodaile") {
         ShayminHpLife = ShayminHpLife
         EnemyTotodaileHpLife = EnemyTotodaileHpLife - 15
@@ -115,10 +119,14 @@ function combate() {
         // sunflora agua fuego vs garchomp fuego tierra
         SunfloraHpLife = SunfloraHpLife - 10
         EnemyGarchompHpLife = EnemyGarchompHpLife - 10
-    } else if (pokemonAliado == "Sunflora" && pokemonEnemigo == "Kabutops" || pokemonAliado == "Kabutops" && pokemonEnemigo == "Sunflora") {
+    } else if (pokemonAliado == "Sunflora" && pokemonEnemigo == "Kabutops" ) {
         // sunflora agua fuego vs garchomp agua tierra
         SunfloraHpLife = SunfloraHpLife - 10
         EnemyKabutopsHpLife = EnemyKabutopsHpLife - 10
+    } else if (pokemonAliado == "Kabutops" && pokemonEnemigo == "Sunflora") {
+        // sunflora agua fuego vs garchomp agua tierra
+        EnemySunfloraHpLife = EnemySunfloraHpLife - 10
+        KabutopsHpLife = KabutopsHpLife - 10
     }
 
     //Totodaile
@@ -137,11 +145,16 @@ function combate() {
         // agua contra fuego
         TotodaileHpLife = TotodaileHpLife
         EnemyCharizardHpLife = EnemyCharizardHpLife - 15
-    } else if (pokemonAliado == "Totodaile" && pokemonEnemigo == "Garchomp" || pokemonAliado == "Garchomp" && pokemonEnemigo == "Totodaile") {
+    } else if (pokemonAliado == "Totodaile" && pokemonEnemigo == "Garchomp") {
         // garchomp es fuego tierra
         TotodaileHpLife = TotodaileHpLife - 10
         EnemyGarchompHpLife = EnemyGarchompHpLife - 10
-    } else if (pokemonAliado == "Totodaile" && pokemonEnemigo == "Kabutops") {
+    } else if (pokemonAliado == "Garchomp" && pokemonEnemigo == "Totodaile") {
+        // garchomp es fuego tierra
+        EnemyTotodaileHpLife = EnemyTotodaileHpLife - 10
+        GarchompHpLife = GarchompHpLife - 10
+    }  
+    else if (pokemonAliado == "Totodaile" && pokemonEnemigo == "Kabutops") {
         // agua vs agua tierra
         TotodaileHpLife = TotodaileHpLife - 15
         EnemyKabutopsHpLife = EnemyKabutopsHpLife - 5
@@ -168,10 +181,14 @@ function combate() {
         // fuego contra fuego tierra
         CharizardHpLife = CharizardHpLife - 5
         EnemyGarchompHpLife = EnemyGarchompHpLife - 15
-    } else if (pokemonAliado == "Charizard" && pokemonEnemigo == "Kabutops" || pokemonAliado == "Kabutops" && pokemonEnemigo == "Charizard") {
+    } else if (pokemonAliado == "Charizard" && pokemonEnemigo == "Kabutops") {
         // fuego contra agua tierra
         CharizardHpLife = CharizardHpLife - 10
         EnemyKabutopsHpLife = EnemyKabutopsHpLife - 10
+    }  else if (pokemonAliado == "Kabutops" && pokemonEnemigo == "Charizard") {
+        // fuego contra agua tierra
+        EnemyCharizardHpLife = EnemyCharizardHpLife - 10
+        KabutopsHpLife = KabutopsHpLife - 10
     }
 
     // Garchomp
@@ -190,10 +207,14 @@ function combate() {
         GarchompHpLife = GarchompHpLife - 15
         EnemyCharizardHpLife = EnemyCharizardHpLife - 5
     }
-    else if (pokemonAliado == "Garchomp" && pokemonEnemigo == "Kabutops" || pokemonAliado == "Kabutops" && pokemonEnemigo == "Garchomp") {
+    else if (pokemonAliado == "Garchomp" && pokemonEnemigo == "Kabutops") {
         // fuego tierra vs agua tierra
         GarchompHpLife = GarchompHpLife - 10
         EnemyKabutopsHpLife = EnemyKabutopsHpLife - 10
+    } else if (pokemonAliado == "Kabutops" && pokemonEnemigo == "Garchomp") {
+        // fuego tierra vs agua tierra
+        EnemyGarchompHpLife = EnemyGarchompHpLife - 10
+        KabutopsHpLife = KabutopsHpLife - 10
     }
 
     // Kabutops
@@ -209,9 +230,6 @@ function combate() {
         EnemyTotodaileHpLife = EnemyTotodaileHpLife - 15
     }
 
-    console.log("Salimos de aca")
-    console.log(pokemonAliado)
-    console.log(pokemonEnemigo)
     //crearMensaje()
 }
 
@@ -220,6 +238,10 @@ function aletatorio(min, max) {
 }
 
 function seleccionarMascota() {
+
+    if (ShayminHpLife <= 0 && SunfloraHpLife <= 0 && TotodaileHpLife <= 0 && CharizardHpLife <= 0 && GarchompHpLife <= 0 && KabutopsHpLife <= 0) {
+        return alert("Te has desmayado! PERDISTEEE! :(");
+    }
 
     let inputShaymin = document.getElementById("Shaymin")
     let inputSunflora = document.getElementById("Sunflora")
@@ -278,9 +300,10 @@ function mascotaDelEnemigoRandom() {
     }
 
 
-    actualizarVidaJugador(pokemonAliado, pokemonEnemigo)
+    // actualizarVidaJugador(pokemonAliado, pokemonEnemigo)
     combate()
     actualizarVidaJugador(pokemonAliado, pokemonEnemigo)
+
 }
 
 function iniciarJuego() {
@@ -386,53 +409,54 @@ function actualizarVidaJugador(pokemon, pokemon2) {
     let spanVidaMascotaEnemigo = document.getElementById("vida_mascota_enemigo")
 
     if (pokemon == "Shaymin") {
-        PokemonHp.innerHTML = ShayminHpLife + "Hp"
-        spanVidaMascotaJugador.innerHTML = ShayminHpLife
         if (ShayminHpLife <= 0) {
             document.getElementById(pokemon).disabled = true;
             alert("Tu " + pokemon + " Se ha desmayado! Usa otro")
             ShayminHpLife = 0;
         }
+        PokemonHp.innerHTML = ShayminHpLife + "Hp"
+        spanVidaMascotaJugador.innerHTML = ShayminHpLife
     } else if (pokemon == "Sunflora") {
+        if (SunfloraHpLife <= 0) {
+            SunfloraHpLife = 0;
+            document.getElementById(pokemon).disabled = true;
+            alert("Tu " + pokemon + " Se ha desmayado! Usa otro")
+        }
         PokemonHp.innerHTML = SunfloraHpLife + "Hp"
         spanVidaMascotaJugador.innerHTML = SunfloraHpLife
-        if (SunfloraHpLife <= 0) {
+
+    } else if (pokemon == "Totodaile") {
+        if (TotodaileHpLife <= 0) {
+            TotodaileHpLife = 0;
             document.getElementById(pokemon).disabled = true;
             alert("Tu " + pokemon + " Se ha desmayado! Usa otro")
-            SunfloraHpLife = 0;
         }
-    } else if (pokemon == "Totodaile") {
         PokemonHp.innerHTML = TotodaileHpLife + "Hp"
         spanVidaMascotaJugador.innerHTML = TotodaileHpLife
-        if (TotodaileHpLife <= 0) {
+    } else if (pokemon == "Charizard") {
+        if (CharizardHpLife <= 0) {
+            CharizardHpLife = 0;
             document.getElementById(pokemon).disabled = true;
             alert("Tu " + pokemon + " Se ha desmayado! Usa otro")
-            TotodaileHpLife = 0;
         }
-    } else if (pokemon == "Charizard") {
         PokemonHp.innerHTML = CharizardHpLife + "Hp"
         spanVidaMascotaJugador.innerHTML = CharizardHpLife
-        if (CharizardHpLife <= 0) {
+    } else if (pokemon == "Garchomp") {
+        if (GarchompHpLife <= 0) {
+            GarchompHpLife = 0;
             document.getElementById(pokemon).disabled = true;
             alert("Tu " + pokemon + " Se ha desmayado! Usa otro")
-            CharizardHpLife = 0;
         }
-    } else if (pokemon == "Garchomp") {
         PokemonHp.innerHTML = GarchompHpLife + "Hp"
         spanVidaMascotaJugador.innerHTML = GarchompHpLife
-        if (GarchompHpLife <= 0) {
+    } else if (pokemon == "Kabutops") {
+        if (KabutopsHpLife <= 0) {
+            KabutopsHpLife = 0;
             document.getElementById(pokemon).disabled = true;
             alert("Tu " + pokemon + " Se ha desmayado! Usa otro")
-            GarchompHpLife = 0;
         }
-    } else if (pokemon == "Kabutops") {
         PokemonHp.innerHTML = KabutopsHpLife + "Hp"
         spanVidaMascotaJugador.innerHTML = KabutopsHpLife
-        if (KabutopsHpLife <= 0) {
-            document.getElementById(pokemon).disabled = true;
-            alert("Tu " + pokemon + " Se ha desmayado! Usa otro")
-            KabutopsHpLife = 0;
-        }
     }
     spanMascotaJugador.innerHTML = pokemon
 
