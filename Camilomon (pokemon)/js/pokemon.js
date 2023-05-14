@@ -33,30 +33,11 @@ let EnemyCharizardHpLife
 let EnemyGarchompHpLife
 let EnemyKabutopsHpLife
 
-function ataque(tipo) {
-    ataqueJuador = tipo;
-    ataqueEnemigoGlobal();
-}
-
-function ataqueEnemigoGlobal() {
-    let ataqueAleatorio = aletatorio(1, 3)
-
-    // esto no importa!!!
-
-    if (ataqueAleatorio == 1) {
-        ataqueEnemigo = "fuego";
-    } else if (ataqueAleatorio == 2) {
-        ataqueEnemigo = "agua";
-    } else {
-        ataqueEnemigo = "tierra";
-    }
-
-    combate()
-}
-
 function combate() {
     // aca ellos hacen unos condicionales para determinar quien gana en funcion de ataques, pero no lo hice por que eso ya se hizo antes
-
+    if (pokemonAliado == "") {
+        return alert("Selecciona un pokemon!");
+    }
     if (pokemonAliado == pokemonEnemigo) {
         if (pokemonAliado == "Shaymin") {
             ShayminHpLife = ShayminHpLife - 5
@@ -260,9 +241,10 @@ function seleccionarMascota() {
         pokemonAliado = "Garchomp"
     } else if (inputKabutops.checked) {
         pokemonAliado = "Kabutops"
-    } else (
-        alert("Selecciona un pokemon!")
-    )
+    } else {
+        return alert("Selecciona un pokemon!")
+    }
+
 
     mascotaDelEnemigoRandom()
 }
@@ -343,8 +325,8 @@ function setCssLabel(pkAliado, pkEnemigo) {
     myLabel2.classList.add("selectedEnemy");
 }
 
-function pkDead(pkAllyDeath,pokeEnemyDeath) {
-    if (pkAllyDeath !== ""){
+function pkDead(pkAllyDeath, pokeEnemyDeath) {
+    if (pkAllyDeath !== "") {
         let correctLabel = pkAllyDeath + "_label"
         let myLabel = document.getElementById(correctLabel);
         myLabel.classList.add("deadPokemon");
@@ -412,7 +394,8 @@ function iniciarJuego() {
 
     let sectionStatsAtaque = document.getElementById("Status")
     sectionStatsAtaque.style.display = "none"
-    let sectionReiniciar = document.getElementById("Reiniciar")
+    
+    let sectionReiniciar = document.getElementById("boton_restart")
     sectionReiniciar.style.display = "none"
 
 
@@ -473,20 +456,11 @@ function iniciarJuego() {
 
 function crearMensajeJugador(hpJugador, hpEnemigo, muerteaAliado, muerteEnemigo) {
     let seccionMensajes = document.getElementById('Log_de_ataques')
-
-    let parrafoJugador = document.createElement("p")
-
-    // else {
-    //     seccionMensajes.appendChild(parrafoJugador)
-    //     seccionMensajes.appendChild(parrafoEnemigo)
-    // }
-
-    console.log(hpJugador)
-    console.log(hpEnemigo)
     if (hpJugador || hpEnemigo !== "") {
 
         let separador = document.createElement("p")
         separador.innerHTML = "----------------"
+
         seccionMensajes.appendChild(separador)
         let parrafoResultado = document.createElement("p")
 
@@ -496,51 +470,64 @@ function crearMensajeJugador(hpJugador, hpEnemigo, muerteaAliado, muerteEnemigo)
         let parrafoEnemigo = document.createElement("p")
         parrafoEnemigo.innerHTML = "El " + pokemonEnemigo + " de tu enemigo ataco y se le redujo la vida a " + hpEnemigo + "!"
 
-        console.log('llegue aca')
         seccionMensajes.appendChild(parrafoJugador)
         seccionMensajes.appendChild(parrafoEnemigo)
 
 
-        if (ganaste()) {
-            parrafoResultado.innerHTML = "GANASTE! MUY BIEN!"
-            seccionMensajes.appendChild(parrafoResultado)
-            let sectionReiniciar = document.getElementById("Reiniciar")
-            sectionReiniciar.style.display = "block"
-        } else if (perdiste()) {
-            parrafoResultado.innerHTML = "PERDISTE! Lo Sentimos :(!"
-            seccionMensajes.appendChild(parrafoResultado)
-
-            let sectionReiniciar = document.getElementById("Reiniciar")
-            sectionReiniciar.style.display = "block"
-
-        }
+        seccionMensajes.insertBefore(separador, seccionMensajes.firstChild);
+        seccionMensajes.insertBefore(parrafoEnemigo, seccionMensajes.firstChild);
+        seccionMensajes.insertBefore(parrafoJugador, seccionMensajes.firstChild);
 
     }
 
-    if (hpJugador == "") {
-        if (muerteaAliado == "muerteAliado") {
+    if (muerteaAliado == "muerteAliado") {
 
-            let separador = document.createElement("p")
-            separador.innerHTML = "----------------"
-            seccionMensajes.appendChild(separador)
+        let muerteAliado = document.createElement("p")
+        muerteAliado.innerHTML = "!!!!!!! Tu " + pokemonAliado + " se ha desmayado!!!!!!!"
+        seccionMensajes.appendChild(muerteAliado)
 
-            let muerteAliado = document.createElement("p")
-            muerteAliado.innerHTML = "!!!!!!! Tu " + pokemonAliado + " se ha desmayado!!!!!!!"
-            seccionMensajes.appendChild(muerteAliado)
 
-        } else if (muerteEnemigo == "muerteEnemigo") {
-            let muerteEnemigo = document.createElement("p")
-            muerteEnemigo.innerHTML = "!!!!!! El " + pokemonEnemigo + " de tu enemigo se ha desmayado!!!!!!!!!"
-            seccionMensajes.appendChild(muerteEnemigo)
-        }
-
+        seccionMensajes.insertBefore(muerteAliado, seccionMensajes.firstChild);
     }
 
+    if (muerteEnemigo == "muerteEnemigo") {
+
+        let muerteEnemigo = document.createElement("p")
+        muerteEnemigo.innerHTML = "!!!!!! El " + pokemonEnemigo + " de tu enemigo se ha desmayado!!!!!!!!!"
+        seccionMensajes.appendChild(muerteEnemigo)
+
+        seccionMensajes.insertBefore(muerteEnemigo, seccionMensajes.firstChild);
+    }
+
+    let botonMascota = document.getElementById("boton_seleccionar_mascota");
+    let parrafoResultado = document.createElement("p")
+
+    if (ganaste()) {
+        parrafoResultado.innerHTML = "GANASTE! MUY BIEN!"
+        seccionMensajes.appendChild(parrafoResultado)
+        seccionMensajes.insertBefore(parrafoResultado, seccionMensajes.firstChild);
+        let sectionReiniciar = document.getElementById("boton_restart")
+        sectionReiniciar.style.display = "block"
+        botonMascota.disabled = true
+        return alert("GANASTE!!! Eres un campeon pokemon");
+    } else if (perdiste()) {
+        parrafoResultado.innerHTML = "PERDISTE! Lo Sentimos :(!"
+        seccionMensajes.appendChild(parrafoResultado)
+        seccionMensajes.insertBefore(parrafoResultado, seccionMensajes.firstChild);
+        let sectionReiniciar = document.getElementById("boton_restart")
+        sectionReiniciar.style.display = "block"
+        botonMascota.disabled = true
+        return alert("Te has desmayado! PERDISTEEE! :(");
+
+    }
 }
 
 function actualizarVidaJugador(pokemon, pokemon2) {
     let pokeText1 = pokemon + "_Hp"
     let pokeText2 = "Enemy" + pokemon2 + "_Hp"
+
+    let mensajeMuerteAliado
+    let mensajeMuerteEnemgo
 
     let PokemonHp = document.getElementById(pokeText1)
     let EnemyPokemonHp = document.getElementById(pokeText2)
@@ -559,7 +546,7 @@ function actualizarVidaJugador(pokemon, pokemon2) {
             ShayminHpLife = 0;
             document.getElementById(pokemon).disabled = true;
             alert("Tu " + pokemon + " Se ha desmayado! Usa otro")
-            crearMensajeJugador("", "", "muerteAliado", "")
+            mensajeMuerteAliado = "muerteAliado"
             pkDead(pokemon)
         }
         hpJugador = ShayminHpLife
@@ -570,7 +557,7 @@ function actualizarVidaJugador(pokemon, pokemon2) {
             SunfloraHpLife = 0;
             document.getElementById(pokemon).disabled = true;
             alert("Tu " + pokemon + " Se ha desmayado! Usa otro")
-            crearMensajeJugador("", "", "muerteAliado", "")
+            mensajeMuerteAliado = "muerteAliado"
             pkDead(pokemon)
         }
         hpJugador = SunfloraHpLife
@@ -582,7 +569,7 @@ function actualizarVidaJugador(pokemon, pokemon2) {
             TotodaileHpLife = 0;
             document.getElementById(pokemon).disabled = true;
             alert("Tu " + pokemon + " Se ha desmayado! Usa otro")
-            crearMensajeJugador("", "", "muerteAliado", "")
+            mensajeMuerteAliado = "muerteAliado"
             pkDead(pokemon)
         }
         hpJugador = TotodaileHpLife
@@ -593,7 +580,7 @@ function actualizarVidaJugador(pokemon, pokemon2) {
             CharizardHpLife = 0;
             document.getElementById(pokemon).disabled = true;
             alert("Tu " + pokemon + " Se ha desmayado! Usa otro")
-            crearMensajeJugador("", "", "muerteAliado", "")
+            mensajeMuerteAliado = "muerteAliado"
             pkDead(pokemon)
         }
         hpJugador = CharizardHpLife
@@ -604,7 +591,7 @@ function actualizarVidaJugador(pokemon, pokemon2) {
             GarchompHpLife = 0;
             document.getElementById(pokemon).disabled = true;
             alert("Tu " + pokemon + " Se ha desmayado! Usa otro")
-            crearMensajeJugador("", "", "muerteAliado", "")
+            mensajeMuerteAliado = "muerteAliado"
             pkDead(pokemon)
         }
         hpJugador = GarchompHpLife
@@ -615,7 +602,7 @@ function actualizarVidaJugador(pokemon, pokemon2) {
             KabutopsHpLife = 0;
             document.getElementById(pokemon).disabled = true;
             alert("Tu " + pokemon + " Se ha desmayado! Usa otro")
-            crearMensajeJugador("", "", "muerteAliado", "")
+            mensajeMuerteAliado = "muerteAliado"
             pkDead(pokemon)
         }
         hpJugador = KabutopsHpLife
@@ -628,8 +615,8 @@ function actualizarVidaJugador(pokemon, pokemon2) {
     if (pokemon2 == "Shaymin") {
         if (EnemyShayminHpLife <= 0) {
             EnemyShayminHpLife = 0;
-            crearMensajeJugador("", "", "", "muerteEnemigo")
-            pkDead("",pokemon2)
+            mensajeMuerteEnemgo = "muerteEnemigo"
+            pkDead("", pokemon2)
         }
         EnemyPokemonHp.innerHTML = EnemyShayminHpLife + "Hp"
         spanVidaMascotaEnemigo.innerHTML = EnemyShayminHpLife
@@ -637,8 +624,8 @@ function actualizarVidaJugador(pokemon, pokemon2) {
     } else if (pokemon2 == "Sunflora") {
         if (EnemySunfloraHpLife <= 0) {
             EnemySunfloraHpLife = 0;
-            crearMensajeJugador("", "", "", "muerteEnemigo")
-            pkDead("",pokemon2)
+            mensajeMuerteEnemgo = "muerteEnemigo"
+            pkDead("", pokemon2)
         }
         EnemyPokemonHp.innerHTML = EnemySunfloraHpLife + "Hp"
         spanVidaMascotaEnemigo.innerHTML = EnemySunfloraHpLife
@@ -646,8 +633,8 @@ function actualizarVidaJugador(pokemon, pokemon2) {
     } else if (pokemon2 == "Totodaile") {
         if (EnemyTotodaileHpLife <= 0) {
             EnemyTotodaileHpLife = 0;
-            crearMensajeJugador("", "", "", "muerteEnemigo")
-            pkDead("",pokemon2)
+            mensajeMuerteEnemgo = "muerteEnemigo"
+            pkDead("", pokemon2)
         }
         EnemyPokemonHp.innerHTML = EnemyTotodaileHpLife + "Hp"
         spanVidaMascotaEnemigo.innerHTML = EnemyTotodaileHpLife
@@ -655,8 +642,8 @@ function actualizarVidaJugador(pokemon, pokemon2) {
     } else if (pokemon2 == "Charizard") {
         if (EnemyCharizardHpLife <= 0) {
             EnemyCharizardHpLife = 0;
-            crearMensajeJugador("", "", "", "muerteEnemigo")
-            pkDead("",pokemon2)
+            mensajeMuerteEnemgo = "muerteEnemigo"
+            pkDead("", pokemon2)
         }
         EnemyPokemonHp.innerHTML = EnemyCharizardHpLife + "Hp"
         spanVidaMascotaEnemigo.innerHTML = EnemyCharizardHpLife
@@ -664,8 +651,8 @@ function actualizarVidaJugador(pokemon, pokemon2) {
     } else if (pokemon2 == "Garchomp") {
         if (EnemyGarchompHpLife <= 0) {
             EnemyGarchompHpLife = 0;
-            crearMensajeJugador("", "", "", "muerteEnemigo")
-            pkDead("",pokemon2)
+            mensajeMuerteEnemgo = "muerteEnemigo"
+            pkDead("", pokemon2)
         }
         EnemyPokemonHp.innerHTML = EnemyGarchompHpLife + "Hp"
         spanVidaMascotaEnemigo.innerHTML = EnemyGarchompHpLife
@@ -673,8 +660,8 @@ function actualizarVidaJugador(pokemon, pokemon2) {
     } else if (pokemon2 == "Kabutops") {
         if (EnemyKabutopsHpLife <= 0) {
             EnemyKabutopsHpLife = 0;
-            crearMensajeJugador("", "", "", "muerteEnemigo")
-            pkDead("",pokemon2)
+            mensajeMuerteEnemgo = "muerteEnemigo"
+            pkDead("", pokemon2)
         }
         EnemyPokemonHp.innerHTML = EnemyKabutopsHpLife + "Hp"
         spanVidaMascotaEnemigo.innerHTML = EnemyKabutopsHpLife
@@ -682,17 +669,8 @@ function actualizarVidaJugador(pokemon, pokemon2) {
     }
     spanMascotaEnemigo.innerHTML = pokemon2
 
-    crearMensajeJugador(hpJugador, hpEnemigo)
+    crearMensajeJugador(hpJugador, hpEnemigo, mensajeMuerteAliado, mensajeMuerteEnemgo)
 
-    let botonMascota = document.getElementById("boton_seleccionar_mascota");
-
-    if (ganaste()) {
-        botonMascota.disabled = true
-        return alert("GANASTE!!! Eres un campeon pokemon");
-    } else if (perdiste()) {
-        botonMascota.disabled = true
-        return alert("Te has desmayado! PERDISTEEE! :(");
-    }
 }
 
 function reiniciarJuego() {
