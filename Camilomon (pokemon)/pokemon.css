@@ -183,7 +183,7 @@ button {
     transition: all 0.3s ease;
     margin-left: 35px;
     margin-top: 15px;
-    margin-bottom: 35px;
+    margin-bottom: 33px;
 }
 
 button:hover {
@@ -209,7 +209,7 @@ p {
     width: inherit;
     display: flex;
     background-color: rgba(0, 0, 0, 0.4) ;
-    min-height: 145px;
+    min-height: 141px;
 }
 
 #Log_de_ataques { 
