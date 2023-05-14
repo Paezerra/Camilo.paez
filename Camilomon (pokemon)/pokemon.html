@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="./pokemon.css" />
   </head>
   <body>
-    <section>
+    <section id="encabezado">
       <img
         src="./Pokemones/International_Pokémon_logo.svg.png"
         alt=""
@@ -14,20 +14,30 @@
         height="80"
         id="logo-pokemon"
       />
-      <h1>Camilomon! 🔥💧🌱</h1>
-      <p class="subtitulos">Bienvenido a Camilomon v1.0</p>
+      <h1>Prparate para la pelea con Camilomon! Un test de html, css y js</h1>
     </section>
 
-    <div class="status-bar">
+    <section id="Reiniciar">
+        <h2>Quieres reiniciar?</h2>
+        <p>
+          <button id="boton_restart">Reiniciar combate</button>
+        </p>
+      </section>
+
+    <!-- <div class="status-bar">
       <div class="bar" style="width: 50%"></div>
       <div class="label">HP</div>
       <div class="value">50/100</div>
-    </div>
+    </div> -->
 
-    <h2>Tus rivales!</h2>
+    <h2 class="titulo_inicio">Tus rivales!</h2>
+    <h2 class="titulo_post_inicio">
+      El&nbsp<span id="span_nombre_mascota_enemigo"></span>&nbspde tu enemigo
+      tiene&nbsp <span id="vida_mascota_enemigo"></span>&nbspHp
+    </h2>
     <section id="enemy">
       <!-- Mascotas -->
-      <label for="EnemyShaymin">
+      <label for="EnemyShaymin" id="Enemy_Shaymin_label">
         <span id="EnemyShaymin_Hp">20 Hp</span>
         Shaymin
         <img
@@ -39,7 +49,7 @@
           id="EnemyShaymin"
         />
       </label>
-      <label for="EnemySunflora">
+      <label for="EnemySunflora" id="Enemy_Sunflora_label">
         <span id="EnemySunflora_Hp">20 Hp</span>
         Sunflora
         <img
@@ -51,7 +61,7 @@
           id="EnemySunflora"
         />
       </label>
-      <label for="EnemyTotodaile">
+      <label for="EnemyTotodaile" id="Enemy_Totodaile_label">
         <span id="EnemyTotodaile_Hp">20 Hp</span>
         Totodaile
         <img
@@ -63,7 +73,7 @@
           id="EnemyTotodaile"
         />
       </label>
-      <label for="EnemyCharizard">
+      <label for="EnemyCharizard" id="Enemy_Charizard_label">
         <span id="EnemyCharizard_Hp">20 Hp</span>
         Charizard
         <img
@@ -75,7 +85,7 @@
           id="EnemyCharizard"
         />
       </label>
-      <label for="EnemyGarchomp">
+      <label for="EnemyGarchomp" id="Enemy_Garchomp_label">
         <span id="EnemyGarchomp_Hp">20 Hp</span>
         Garchomp
         <img
@@ -87,7 +97,7 @@
           id="EnemyGarchomp"
         />
       </label>
-      <label for="EnemyKabutops">
+      <label for="EnemyKabutops" id="Enemy_Kabutops_label">
         <span id="EnemyKabutops_Hp">20 Hp</span>
         Kabutops
         <img
@@ -101,10 +111,14 @@
       </label>
     </section>
 
-    <h2>Porfavor! Elije tu pokemon!!</h2>
+    <h2 class="titulo_inicio">Porfavor! Elije tu pokemon!!</h2>
+    <h2 class="titulo_post_inicio">
+      Tu&nbsp<span id="span_nombre_mascota"></span>&nbsptiene&nbsp
+      <span id="vida_mascota_jugador"></span> &nbspHp
+    </h2>
     <section id="mascotas">
       <!-- Mascotas -->
-      <label for="Shaymin">
+      <label for="Shaymin" id="Shaymin_label">
         <span id="Shaymin_Hp"></span>
         Shaymin
         <input type="radio" name="mokepon" id="Shaymin" />
@@ -117,7 +131,7 @@
           id="Shaymin"
         />
       </label>
-      <label for="Sunflora">
+      <label for="Sunflora" id="Sunflora_label">
         <span id="Sunflora_Hp">20 Hp</span>
         Sunflora
         <input type="radio" name="mokepon" id="Sunflora" />
@@ -130,7 +144,7 @@
           id="Sunflora"
         />
       </label>
-      <label for="Totodaile">
+      <label for="Totodaile" id="Totodaile_label">
         <span id="Totodaile_Hp">20 Hp</span>
         Totodaile
         <input type="radio" name="mokepon" id="Totodaile" />
@@ -143,7 +157,7 @@
           id="Totodaile"
         />
       </label>
-      <label for="Charizard">
+      <label for="Charizard" id="Charizard_label">
         <span id="Charizard_Hp">20 Hp</span>
         Charizard
         <input type="radio" name="mokepon" id="Charizard" />
@@ -156,7 +170,7 @@
           id="Charizard"
         />
       </label>
-      <label for="Garchomp">
+      <label for="Garchomp" id="Garchomp_label">
         <span id="Garchomp_Hp">20 Hp</span>
         Garchomp
         <input type="radio" name="mokepon" id="Garchomp" />
@@ -169,7 +183,7 @@
           id="Garchomp"
         />
       </label>
-      <label for="Kabutops">
+      <label for="Kabutops" id="Kabutops_label">
         <span id="Kabutops_Hp">20 Hp</span>
         Kabutops
         <input type="radio" name="mokepon" id="Kabutops" />
@@ -183,21 +197,10 @@
         />
       </label>
     </section>
-
-
+    
+    <button id="boton_seleccionar_mascota">ATACA!</button>
     <section id="Status">
-      <p>
-        <button id="boton_seleccionar_mascota">ATACA!</button>
-      </p>
 
-      <p>
-        Tu <span id="span_nombre_mascota"></span> tiene
-        <span id="vida_mascota_jugador"></span> Hp
-      </p>
-      <p>
-        El <span id="span_nombre_mascota_enemigo"></span> de tu enemigo tiene
-        <span id="vida_mascota_enemigo"></span> Hp
-      </p>
       <h2>Historial!</h2>
     </section>
 
@@ -210,11 +213,6 @@
     </p> -->
     <section id="Log_de_ataques"></section>
 
-    <section id="Reiniciar">
-      <h2>Quieres reiniciar?</h2>
-      <p>
-        <button id="boton_restart">Reiniciar combate</button>
-      </p>
-    </section>
+    
   </body>
 </html>
