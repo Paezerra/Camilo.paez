@@ -205,11 +205,18 @@ p {
     
 }
 
-#Status {
+ #Status {
     width: inherit;
     display: flex;
     background-color: rgba(0, 0, 0, 0.4) ;
-    min-height: 141px;
+    min-height: 145px;
+    align-items: center;
+    justify-content: center;
+    width: 92.5vw;
+}
+
+section.sytle {
+    display: flex;
 }
 
 #Log_de_ataques { 
@@ -221,7 +228,7 @@ p {
     min-height: 120px;
     /* border: 10px solid red ; */
     overflow-y: auto;
-    margin-top: 25px;
+    margin-top: 20px;
 }
 
 #botones {
