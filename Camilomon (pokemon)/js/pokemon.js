@@ -1,3 +1,21 @@
+let inputShaymin = document.getElementById("Shaymin")
+let inputSunflora = document.getElementById("Sunflora")
+let inputTotodaile = document.getElementById("Totodaile")
+let inputCharizard = document.getElementById("Charizard")
+let inputGarchomp = document.getElementById("Garchomp")
+let inputKabutops = document.getElementById("Kabutops")
+
+let labels = document.getElementsByTagName("label");
+
+let radioInputs = document.getElementsByName("mokepon");
+
+let seccionMensajes = document.getElementById('Log_de_ataques')
+
+let spanVidaMascotaJugador = document.getElementById("vida_mascota_jugador")
+let spanMascotaJugador = document.getElementById("span_nombre_mascota")
+let spanMascotaEnemigo = document.getElementById('span_nombre_mascota_enemigo')
+let spanVidaMascotaEnemigo = document.getElementById("vida_mascota_enemigo")
+
 let iniciadorTitulo = 0
 let ataqueJuador
 let ataqueEnemigo
@@ -59,8 +77,7 @@ function combate() {
             EnemyKabutopsHpLife = EnemyKabutopsHpLife - 5
         }
 
-        // Shayim
-
+     // Shayim
     } else if (pokemonAliado == "Shaymin" && pokemonEnemigo == "Sunflora") {
         // sunflora es agua fuego
         ShayminHpLife = ShayminHpLife - 10
@@ -86,7 +103,6 @@ function combate() {
     }
 
     // sunflora
-
     else if (pokemonAliado == "Sunflora" && pokemonEnemigo == "Totodaile") {
         // sunflora puede usar ataques agua fuego
         SunfloraHpLife = SunfloraHpLife - 15
@@ -110,7 +126,6 @@ function combate() {
     }
 
     //Totodaile
-
     else if (pokemonAliado == "Totodaile" && pokemonEnemigo == "Shaymin") {
         // agua contra fuego agua
         TotodaileHpLife = TotodaileHpLife - 15
@@ -141,7 +156,6 @@ function combate() {
     }
 
     // charizard
-
     else if (pokemonAliado == "Charizard" && pokemonEnemigo == "Shaymin") {
         // fuego contra agua fuego
         CharizardHpLife = CharizardHpLife
@@ -198,7 +212,6 @@ function combate() {
     }
 
     // Kabutops
-
     else if (pokemonAliado == "Kabutops" && pokemonEnemigo == "Shaymin") {
         // tierra agua vs tierra
         KabutopsHpLife = KabutopsHpLife - 5
@@ -211,7 +224,6 @@ function combate() {
     }
 
     //crearMensaje()
-
     actualizarVidaJugador(pokemonAliado, pokemonEnemigo)
     seleccionarMascota()
 }
@@ -221,14 +233,6 @@ function aletatorio(min, max) {
 }
 
 function seleccionarMascota() {
-
-    let inputShaymin = document.getElementById("Shaymin")
-    let inputSunflora = document.getElementById("Sunflora")
-    let inputTotodaile = document.getElementById("Totodaile")
-    let inputCharizard = document.getElementById("Charizard")
-    let inputGarchomp = document.getElementById("Garchomp")
-    let inputKabutops = document.getElementById("Kabutops")
-
     if (inputShaymin.checked) {
         pokemonAliado = "Shaymin"
     } else if (inputSunflora.checked) {
@@ -244,8 +248,6 @@ function seleccionarMascota() {
     } else {
         return alert("Selecciona un pokemon!")
     }
-
-
     mascotaDelEnemigoRandom()
 }
 
@@ -267,8 +269,6 @@ function perdiste() {
 
 function mascotaDelEnemigoRandom() {
     let ataqueAleatorio = aletatorio(1, 6)
-
-
     do {
         let ataqueAleatorio = aletatorio(1, 6)
         if (ataqueAleatorio == 1 && EnemyShayminHpLife > 0) {
@@ -339,7 +339,6 @@ function pkDead(pkAllyDeath, pokeEnemyDeath) {
 }
 
 function resetDefaultCss() {
-    let labels = document.getElementsByTagName("label");
     for (let i = 0; i < labels.length; i++) {
         labels[i].classList.remove("selectedPokemon");
         labels[i].classList.remove("selectedEnemy");
@@ -348,12 +347,11 @@ function resetDefaultCss() {
 
 function iniciarJuego() {
 
-    let radioInputs = document.getElementsByName("mokepon");
 
     for (let i = 0; i < radioInputs.length; i++) {
         radioInputs[i].addEventListener("change", function () {
             let sectionStatsAtaque = document.getElementById("Status")
-            sectionStatsAtaque.style.display = "block"
+            sectionStatsAtaque.style.display = "flex"
             seleccionarMascota();
             actualizarNombres(pokemonAliado, pokemonEnemigo)
         });
@@ -455,7 +453,6 @@ function iniciarJuego() {
 }
 
 function crearMensajeJugador(hpJugador, hpEnemigo, muerteaAliado, muerteEnemigo) {
-    let seccionMensajes = document.getElementById('Log_de_ataques')
     if (hpJugador || hpEnemigo !== "") {
 
         let separador = document.createElement("p")
@@ -525,19 +522,10 @@ function crearMensajeJugador(hpJugador, hpEnemigo, muerteaAliado, muerteEnemigo)
 function actualizarVidaJugador(pokemon, pokemon2) {
     let pokeText1 = pokemon + "_Hp"
     let pokeText2 = "Enemy" + pokemon2 + "_Hp"
-
     let mensajeMuerteAliado
     let mensajeMuerteEnemgo
-
     let PokemonHp = document.getElementById(pokeText1)
     let EnemyPokemonHp = document.getElementById(pokeText2)
-
-    let spanVidaMascotaJugador = document.getElementById("vida_mascota_jugador")
-    let spanMascotaJugador = document.getElementById("span_nombre_mascota")
-
-    let spanMascotaEnemigo = document.getElementById('span_nombre_mascota_enemigo')
-    let spanVidaMascotaEnemigo = document.getElementById("vida_mascota_enemigo")
-
     let hpJugador = ""
     let hpEnemigo = ""
 
@@ -680,16 +668,8 @@ function reiniciarJuego() {
 function actualizarNombres(pokemon, pokemon2) {
     let pokeText1 = pokemon + "_Hp"
     let pokeText2 = "Enemy" + pokemon2 + "_Hp"
-
     let PokemonHp = document.getElementById(pokeText1)
     let EnemyPokemonHp = document.getElementById(pokeText2)
-
-    let spanVidaMascotaJugador = document.getElementById("vida_mascota_jugador")
-    let spanMascotaJugador = document.getElementById("span_nombre_mascota")
-
-    let spanMascotaEnemigo = document.getElementById('span_nombre_mascota_enemigo')
-    let spanVidaMascotaEnemigo = document.getElementById("vida_mascota_enemigo")
-
 
     if (pokemon == "Shaymin") {
         hpJugador = ShayminHpLife

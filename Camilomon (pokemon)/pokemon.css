@@ -28,6 +28,8 @@ body {
     margin-bottom: 150px;
     box-sizing: border-box;
     overflow-x: hidden;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 
@@ -49,6 +51,7 @@ h1 {
     align-self: center;
     font-size: 16px;
     margin: 25px;
+    max-width: 700px;
 }
 
 h2 {
@@ -201,30 +204,44 @@ button:disabled {
 p {
     margin-left: 30px;
     padding: 5px;
-    font-size: 14px;
+    font-size: 12px;
     
 }
 
- #Status {
-    width: inherit;
+#Status {
+    width: 72.5vw;
+    min-width: 65vw;
     display: flex;
-    background-color: rgba(0, 0, 0, 0.4) ;
     min-height: 145px;
     align-items: center;
     justify-content: center;
-    width: 92.5vw;
+    margin: 0px auto; /* Add margin */
+    border: 3px solid black; /* Add border */
+    border-radius: 10px; /* Add border radius */
+    max-width: 1100px;
+    margin-left: 37px;
+    margin-right: 37px;
+    padding: 10px;
+  }
+#Status-2 {
+    width: 71vw;
+    width: inherit;
+    border: 3px solid black; /* Add border */
+    border-radius: 5px; /* Add border radius */
+    max-width: auto;
 }
 
 section.sytle {
     display: flex;
 }
 
+
 #Log_de_ataques { 
     display: flex;
     align-content: center;
     flex-direction: column;
-    width: 90vw;
-    height: 10vh;
+    width: inherit;
+    height: 15vh;
     min-height: 120px;
     /* border: 10px solid red ; */
     overflow-y: auto;
@@ -235,3 +252,6 @@ section.sytle {
     display: flex;
     flex-direction: row;
 }
+
+
+  
